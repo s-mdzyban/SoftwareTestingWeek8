@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: dotnet build ./src/SoftwareTesting.sln --no-restore
     - name: Install Playwright
-      run: pwsh .bin/Debug/netX/playwright.ps1 install 
+      run: pwsh ./src/bin/Debug/netX/playwright.ps1 install 
       
     - name: Test
       run: dotnet test ./src/PlaywrightTests/PlaywrightTests.csproj --no-build --verbosity normal
