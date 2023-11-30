@@ -48,8 +48,8 @@ public class UserInterfaceTests
        // assert visible;
         //await page('span')
             //.filter({ hasText: "Invalid Password" })
-        await page.locator(span:has-text("Invalid Password"));
-
+        //await page.locator(span:has-text("Invalid Password"));
+        await page.GetByText("Invalid Password");
         
     }
 }
