@@ -42,7 +42,8 @@ public class UserInterfaceTests
         //await expect(page.GetByText("Invalid Password")).ToBeVisibleAsync();
         //await page.locator(page.GetByText("Invalid Password"));
         //await Expect(page.GetByText("Invalid Password")).ToBeVisibleAsync();
-        Assert.Equal("Invalid Password", page.GetByText("Invalid Password"));
+        var test1Expected = "Invalid Password";
+        Assert.Equal(test1Expected, page.GetByText("Invalid Password"));
         
         //await page('span')
             //.filter({ hasText: "Invalid Password" })
