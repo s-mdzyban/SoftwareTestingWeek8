@@ -24,8 +24,8 @@ public class UserInterfaceTests
         await page.GotoAsync("https://www.letsusedata.com/index.html");
 
         
-        await page.type("text=Your Username", "Test2");
-       //await page.FillAsync("[aria-label=\"Your Username\"]", "Test2");
+        //await page.type("text=Your Username", "Test2");
+        await page.FillAsync("[aria-label=\"Your Username\"]", "Test2");
         await page.FillAsync("[aria-label=\"Your Password\"]", "iF3sBF7c");                             
         // Press Enter
         var response = await page.RunAndWaitForNavigationAsync(async () => await page.PressAsync("[aria-label=\"Login\"]", "Enter"));
