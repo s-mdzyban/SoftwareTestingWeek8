@@ -1,20 +1,29 @@
-// Copyright Information
-// ==================================
-// SoftwareTesting - PlaywrightTests - UserInterfaceTests.cs
-// All samples copyright Philip Japikse
-// http://www.skimedic.com 2022/07/22
-// ==================================
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-namespace PlaywrightTests;
+name: .NET
 
-public class UserInterfaceTests
-{
-    //https://medium.com/version-1/playwright-a-modern-end-to-end-testing-for-web-app-with-c-language-support-c55e931273ee#:~
-    [Fact]
-    public static async Task VerifyGoogleSearchForPlaywright()
-    {
-        //Verify you can add
-        Assert.Equal(4, 2+2);
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-    }
-}
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore ./src/SoftwareTesting.sln
+
+    - name: Build
+      run: dotnet build ./src/SoftwareTesting.sln --no-restore
+    - name: Test
+      run: dotnet test ./src/PlaywrightTests/PlaywrightTests.csproj --no-build --verbosity normal
