@@ -23,20 +23,22 @@ public class UserInterfaceTests
         //Navigate to Google.com
         await page.GotoAsync("https://www.letsusedata.com/index.html");
 
-        //await page.ClickAsync("#txtUser");
-        //await page.type("text=Your Username", "Test2");
-        
+       
         await page.FillAsync("#txtUser", "Test2");
         await page.FillAsync("#txtPassword", "iF3sBF7c");                             
-        // Press Enter
+        // Press Click Login
         var response = await page.RunAndWaitForNavigationAsync(async () => await page.ClickAsync("#javascriptLogin"));
-        //Click on the first search option
-        //const element = await 
-        //await Expect("[aria-label=\"Intro to Data Analytics\"]").ToContainTextAsync("Intro to Data Analytics");
-        //await expect(element !== undefined ).toBeTruthy();
-        //await page.ClickAsync("xpath=//h3[contains(text(),"Intro to Data Analytics")]");
         //Verify Page URL
         Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
+
+       
+        await page.FillAsync("#txtUser", "Test1");
+        await page.FillAsync("#txtPassword", "12345678");                             
+        // Press Click Login
+        var response = await page.RunAndWaitForNavigationAsync(async () => await page.ClickAsync("#javascriptLogin"));
+        //Verify Login Fail
+        //Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
+        await page.getByText("Invalid Password")
         
     }
 }
