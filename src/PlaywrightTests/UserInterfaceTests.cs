@@ -38,7 +38,7 @@ public class UserInterfaceTests
         var response2 = await page.RunAndWaitForNavigationAsync(async () => await page.ClickAsync("#javascriptLogin"));
         //Verify Login Fail
         //Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
-        await page.getByText("Invalid Password");
+        await page.GetByText("Invalid Password");
         
     }
 }
