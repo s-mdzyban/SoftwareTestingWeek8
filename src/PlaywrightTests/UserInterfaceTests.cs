@@ -30,7 +30,7 @@ public class UserInterfaceTests
         // Press Enter
         var response = await page.RunAndWaitForNavigationAsync(async () => await page.ClickAsync("[aria-label=\"Login\"]", "Enter"));
         //Click on the first search option
-        await page.ClickAsync("xpath=//h3[contains(text(),'Intro to Data Analytics')]");
+        await page.ClickAsync("xpath=//h3[contains(text(),"Intro to Data Analytics")]");
         //Verify Page URL
         Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
         
