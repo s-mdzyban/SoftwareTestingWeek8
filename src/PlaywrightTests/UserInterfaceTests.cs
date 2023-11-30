@@ -39,6 +39,6 @@ public class UserInterfaceTests
         //Verify Login Fail
         //Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
         //Assert.Equal(page.GetByText("Invalid Password"));
-        await Expect(Page.GetByText("Invalid Password")).ToBeVisibleAsync();
+        await expect(page.GetByText("Invalid Password")).ToBeVisibleAsync();
     }
 }
