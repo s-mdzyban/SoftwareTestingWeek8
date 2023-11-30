@@ -23,10 +23,10 @@ public class UserInterfaceTests
         //Navigate to Google.com
         await page.GotoAsync("https://www.google.com");
         IReadOnlyList<IFrame> f = page.Frames;
-        if (f.Count > 1)
-        {
-            await f[1].ClickAsync("text=No thanks");
-        }
+        //if (f.Count > 1)
+        //{
+       //     await f[1].ClickAsync("text=No thanks");
+        //}
         // Search Playwright
         await page.FillAsync("[aria-label=\"Search\"]", "Playwright");
         // Press Enter
