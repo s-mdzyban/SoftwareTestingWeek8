@@ -20,10 +20,10 @@ public class UserInterfaceTests
         IBrowserContext context = await browser.NewContextAsync();
 
         IPage page = await context.NewPageAsync();
-        //Navigate to Google.com
+        //Navigate to Let's use data
         await page.GotoAsync("https://www.letsusedata.com/index.html");
 
-       
+        //Enter credentials in text boxes - TEST 2
         await page.FillAsync("#txtUser", "Test2");
         await page.FillAsync("#txtPassword", "iF3sBF7c");                             
         // Press Click Login
@@ -32,24 +32,15 @@ public class UserInterfaceTests
         Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
 
         await page.GotoAsync("https://www.letsusedata.com/index.html");
-        
+
+        //Enter credentials in text boxes - TEST 2
         await page.FillAsync("#txtUser", "Test1");
-        await page.FillAsync("#txtPassword", "12345678");                             
+        await page.FillAsync("#txtPassword", "12345678");   
+        
         // Press Click Login
         await page.ClickAsync("#javascriptLogin");
+        
         //Verify Login Fail
-        //Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
-        //Assert.Equal(page.GetByText("Invalid Password"));
-        //await expect(page.GetByText("Invalid Password")).ToBeVisibleAsync();
-        //await page.locator(page.GetByText("Invalid Password"));
-        //await Expect(page.GetByText("Invalid Password")).ToBeVisibleAsync();
-        //var test1Expected = "Invalid Password";
-        //Assert.Equal( test1Expected , page.GetByText("Invalid Password"));
-        //var visible = await page.is_visible("Invalid Password");
-       // assert visible;
-        //await page('span')
-            //.filter({ hasText: "Invalid Password" })
-        //await page.locator(span:has-text("Invalid Password"));
         page.GetByText("Invalid Password", new() { Exact = true });
      
        
