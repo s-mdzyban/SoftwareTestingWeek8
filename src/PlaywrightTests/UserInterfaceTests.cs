@@ -2,56 +2,44 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumTests
 {
-    [TestClass]
+    [TestFixture]
     public class LetsUseDataLogin
     {
-        private static IWebDriver driver;
+        private IWebDriver driver;
         private StringBuilder verificationErrors;
-        private static string baseURL;
+        private string baseURL;
         private bool acceptNextAlert = true;
         
-        [ClassInitialize]
-        public static void InitializeClass(TestContext testContext)
+        [SetUp]
+        public void SetupTest()
         {
             driver = new FirefoxDriver();
             baseURL = "https://www.google.com/";
+            verificationErrors = new StringBuilder();
         }
         
-        [ClassCleanup]
-        public static void CleanupClass()
+        [TearDown]
+        public void TeardownTest()
         {
             try
             {
-                //driver.Quit();// quit does not close the window
-                driver.Close();
-                driver.Dispose();
+                driver.Quit();
             }
             catch (Exception)
             {
                 // Ignore errors if unable to close the browser
             }
-        }
-        
-        [TestInitialize]
-        public void InitializeTest()
-        {
-            verificationErrors = new StringBuilder();
-        }
-        
-        [TestCleanup]
-        public void CleanupTest()
-        {
             Assert.AreEqual("", verificationErrors.ToString());
         }
         
-        [TestMethod]
+        [Test]
         public void TheLetsUseDataLoginTest()
         {
             driver.Navigate().GoToUrl("https://www.letsusedata.com/");
