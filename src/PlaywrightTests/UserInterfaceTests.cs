@@ -1,17 +1,18 @@
-// Copyright Information
-// ==================================
-// SoftwareTesting - PlaywrightTests - UserInterfaceTests.cs
-// All samples copyright Philip Japikse
-// http://www.skimedic.com 2022/07/22
-// ==================================
+using System;
+using System.Text;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PlaywrightTests;
-
-public class UserInterfaceTests
+public class MortgageTest
 {
-    //https://medium.com/version-1/playwright-a-modern-end-to-end-testing-for-web-app-with-c-language-support-c55e931273ee#:~
-    [Fact]
-    public static async Task VerifyGoogleSearchForPlaywright()
+    private static IWebDriver driver = new ChromeDriver();
+    
+    public string RunTest()
+    {
+		Test();
+		return ChromeDriver.GetLog();
+    }
+
+    public void Test()
     {
             driver.Navigate().GoToUrl("https://www.letsusedata.com/");
             driver.FindElement(By.Id("txtUser")).Click();
