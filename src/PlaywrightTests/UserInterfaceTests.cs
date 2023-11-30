@@ -31,11 +31,12 @@ public class UserInterfaceTests
         //Verify Page URL
         Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
 
-       
+        await page.GotoAsync("https://www.letsusedata.com/index.html");
+        
         await page.FillAsync("#txtUser", "Test1");
         await page.FillAsync("#txtPassword", "12345678");                             
         // Press Click Login
-        var response2 = await page.RunAndWaitForNavigationAsync(async () => await page.ClickAsync("#javascriptLogin"));
+        await page.ClickAsync("#javascriptLogin");
         //Verify Login Fail
         //Assert.Equal("https://www.letsusedata.com/CourseSelection.html", page.Url);
         //Assert.Equal(page.GetByText("Invalid Password"));
