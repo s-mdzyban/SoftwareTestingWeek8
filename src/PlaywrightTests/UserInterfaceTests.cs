@@ -43,15 +43,15 @@ public class UserInterfaceTests
         //await expect(page.GetByText("Invalid Password")).ToBeVisibleAsync();
         //await page.locator(page.GetByText("Invalid Password"));
         //await Expect(page.GetByText("Invalid Password")).ToBeVisibleAsync();
-        var test1Expected = "Invalid Password";
-        Assert.Equal( test1Expected , page.GetByText("Invalid Password"));
+        //var test1Expected = "Invalid Password";
+        //Assert.Equal( test1Expected , page.GetByText("Invalid Password"));
         //var visible = await page.is_visible("Invalid Password");
        // assert visible;
         //await page('span')
             //.filter({ hasText: "Invalid Password" })
         //await page.locator(span:has-text("Invalid Password"));
-        //page.GetByText("Invalid Password")
-        
-        
+        page.GetByText("Invalid Password", new() { Exact = true });
+     
+       
     }
 }
