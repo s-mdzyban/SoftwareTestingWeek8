@@ -27,9 +27,9 @@ public class UserInterfaceTests
         //await page.type("text=Your Username", "Test2");
         
         await page.FillAsync("#txtUser", "Test2");
-        await page.FillAsync("[aria-label=\"Your Password\"]", "iF3sBF7c");                             
+        await page.FillAsync("#txtPassword", "iF3sBF7c");                             
         // Press Enter
-        var response = await page.RunAndWaitForNavigationAsync(async () => await page.ClickAsync("[aria-label=\"Login\"]"));
+        var response = await page.RunAndWaitForNavigationAsync(async () => await page.ClickAsync("#javascriptLogin"));
         //Click on the first search option
         //const element = await 
         //await Expect("[aria-label=\"Intro to Data Analytics\"]").ToContainTextAsync("Intro to Data Analytics");
