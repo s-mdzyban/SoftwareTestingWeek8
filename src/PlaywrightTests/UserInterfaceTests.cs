@@ -24,7 +24,8 @@ public class UserInterfaceTests
         await page.GotoAsync("https://www.letsusedata.com/index.html");
 
         
-        await page.fill('text=Your Username', 'Test2');
+        #await page.fill('text=Your Username', 'Test2');
+        await page.FillAsync('text=Your Username', 'Test2');
         #await page.FillAsync("[aria-label=\"Your Username\"]", "Test2");
         await page.FillAsync("[aria-label=\"Your Password\"]", "iF3sBF7c");                             
         // Press Enter
