@@ -2,51 +2,60 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumTests
 {
-    [TestFixture]
-    public class LetsUseDataLogin
+    [TestClass]
+    public class UntitledTestCase
     {
-        private IWebDriver driver;
+        private static IWebDriver driver;
         private StringBuilder verificationErrors;
-        private string baseURL;
+        private static string baseURL;
         private bool acceptNextAlert = true;
         
-        [SetUp]
-        public void SetupTest()
+        [ClassInitialize]
+        public static void InitializeClass(TestContext testContext)
         {
             driver = new FirefoxDriver();
             baseURL = "https://www.google.com/";
-            verificationErrors = new StringBuilder();
         }
         
-        [TearDown]
-        public void TeardownTest()
+        [ClassCleanup]
+        public static void CleanupClass()
         {
             try
             {
-                driver.Quit();
+                //driver.Quit();// quit does not close the window
+                driver.Close();
+                driver.Dispose();
             }
             catch (Exception)
             {
                 // Ignore errors if unable to close the browser
             }
+        }
+        
+        [TestInitialize]
+        public void InitializeTest()
+        {
+            verificationErrors = new StringBuilder();
+        }
+        
+        [TestCleanup]
+        public void CleanupTest()
+        {
             Assert.AreEqual("", verificationErrors.ToString());
         }
         
-        [Test]
-        public void TheLetsUseDataLoginTest()
+        [TestMethod]
+        public void TheUntitledTestCaseTest()
         {
             driver.Navigate().GoToUrl("https://www.letsusedata.com/");
             driver.FindElement(By.Id("txtUser")).Click();
-            driver.FindElement(By.Id("txtUser")).Clear();
-            driver.FindElement(By.Id("txtUser")).SendKeys("Test2");
-            driver.FindElement(By.Id("txtPassword")).Click();
             driver.FindElement(By.Id("txtPassword")).Clear();
             driver.FindElement(By.Id("txtPassword")).SendKeys("iF3sBF7c");
             driver.FindElement(By.Id("javascriptLogin")).Click();
